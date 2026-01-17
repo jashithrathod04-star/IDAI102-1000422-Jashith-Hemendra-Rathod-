@@ -452,3 +452,5 @@ Community challenges and leaderboards
 ShopImpact demonstrates how technology, data, and design can work together to address real-world challenges. It proves that sustainability tools do not need to be complex to be meaningful.
 
 When awareness meets action, impact follows.
+
+Streamlit:https://plmvqv283eabeok28ypnhv.streamlit.app/
