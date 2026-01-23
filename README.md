@@ -1,4 +1,5 @@
-# 🌍 ShopImpact – Conscious Shopping & Eco Impact Tracker
+#Project Overview 
+ShopImpact – Conscious Shopping & Eco Impact Tracker
 
 ShopImpact is an interactive **Streamlit-based web application** designed to help users make more **eco-conscious purchasing decisions**. By tracking everyday purchases, estimating their **CO₂ impact**, and rewarding sustainable behavior, ShopImpact transforms shopping into a mindful, data-driven experience.
 
