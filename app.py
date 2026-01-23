@@ -108,6 +108,7 @@ def login_signup():
 # ---------------- MAIN APP ----------------
 def open_main_app():
     st.title("ShopImpact 🌍 – Conscious Shopping Dashboard")
+    
 
     today = datetime.date.today().isoformat()
     daily_co2 = st.session_state.daily_data.get(today, 0)
@@ -118,6 +119,27 @@ def open_main_app():
     col1.metric("CO₂ Emissions Today (kg)", f"{daily_co2:.2f}")
     col2.metric("Amount Spent Today (₹)", f"{daily_spend:.2f}")
     col3.metric("Eco Score", f"{eco_score}/100")
+    st.subheader("🌿 Eco Progress")
+    progress = st.progress(0)
+
+    for i in range(eco_score + 1):
+     progress.progress(i)
+
+    st.markdown("""
+<style>
+.glow {
+    font-size: 42px;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from { text-shadow: 0 0 5px #7CFF9E; }
+    to { text-shadow: 0 0 20px #1DB954; }
+}
+</style>
+""", unsafe_allow_html=True)
+    
+    
+
 
     st.divider()
 
@@ -161,25 +183,64 @@ def open_main_app():
 
     st.success(random.choice(QUOTES))
     check_awards()
+    show_badges()
+    show_visual_analytics()
+
+
+
+
+
 
 # ---------------- ADD PURCHASE ----------------
 def add_purchase(product, brand, category, price, eco):
     if not product.strip() or not brand.strip():
-        st.error("Please enter a valid product name and brand.")
+        st.error("❌ Please enter a valid product name and brand.")
         return
 
-    impact = CO2[category]
+    with st.spinner("💾 Saving your purchase..."):
+        impact = CO2[category]
+
+        if eco:
+            impact *= 0.7
+            st.session_state.eco_count += 1
+
+        today = datetime.date.today().isoformat()
+        st.session_state.daily_data[today] += impact
+        st.session_state.spending_data[today] += price
+        st.session_state.total_count += 1
+
+        log = f"{today} | {product} | {brand} | {category} | ₹{price} | {'Eco' if eco else 'Non-Eco'}"
+        st.session_state.log_list.append(log)
+
+    # ---------- PURCHASE CONFIRMED UX ----------
+    st.success("✅ Purchase Confirmed!")
+
+    st.markdown(
+        f"""
+        <div style="
+            background-color:#E8FFF3;
+            padding:16px;
+            border-radius:12px;
+            border-left:6px solid #2ECC71;
+            margin-top:10px;
+        ">
+            <b>🛒 Product:</b> {product}<br>
+            <b>🏷 Brand:</b> {brand}<br>
+            <b>📦 Category:</b> {category}<br>
+            <b>💰 Price:</b> ₹{price:.2f}<br>
+            <b>🌱 Choice:</b> {"Eco-Friendly" if eco else "Standard"}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
     if eco:
-        impact *= 0.7
-        st.session_state.eco_count += 1
+        st.snow()
+        st.info("🌍 Thank you for choosing a sustainable option!")
+    else:
+        st.warning("♻️ Consider eco-friendly alternatives to reduce impact.")
 
-    today = datetime.date.today().isoformat()
-    st.session_state.daily_data[today] += impact
-    st.session_state.spending_data[today] += price
-    st.session_state.total_count += 1
 
-    log = f"{today} | {product} | {brand} | {category} | ₹{price} | {'Eco' if eco else 'Non-Eco'}"
-    st.session_state.log_list.append(log)
 
 # ---------------- CSV DOWNLOAD ----------------
 def download_csv():
@@ -214,10 +275,16 @@ def check_awards():
     eco = st.session_state.eco_count
     if eco >= 30:
         st.success("🏆 Eco Legend – Outstanding commitment to sustainability!")
+        st.balloons()
+
     elif eco >= 15:
         st.success("🏅 Eco Warrior – You are making a difference!")
+        st.balloons()
+
     elif eco >= 5:
         st.success("🎖️ Eco Beginner – A great sustainable start!")
+        st.balloons()
+
 
 # ---------------- FEATURES ----------------
 def top_eco_category():
@@ -257,7 +324,76 @@ def eco_savings():
             price = float(log.split('|')[4].replace('₹', '').strip())
             saved += price * 0.3
     st.info(f"Estimated savings from eco-friendly choices: **₹{saved:.2f}**")
+def show_badges():
+    eco = st.session_state.eco_count
+    
+
+    st.subheader("🏅 Your Eco Badges")
+
+    st.image("eco_award.png", width=200)
+
+    b1, b2, b3 = st.columns(3)
+
+    with b1:
+        if eco >= 5:
+            st.success("🎖️ Eco Beginner\n(5 Eco Purchases)")
+        else:
+            st.info("🔒 Eco Beginner\n(5 Eco Purchases)")
+
+    with b2:
+        if eco >= 15:
+            st.success("🏅 Eco Warrior\n(15 Eco Purchases)")
+        else:
+            st.info("🔒 Eco Warrior\n(15 Eco Purchases)")
+
+    with b3:
+        if eco >= 30:
+            st.markdown('<div class="glow">🏆 Eco Legend</div>', unsafe_allow_html=True)
+        else:
+            st.info("🔒 Eco Legend\n(30 Eco Purchases)")
+
+def show_visual_analytics():
+    st.subheader("📊 Visual Analytics")
+
+    if not st.session_state.log_list:
+        st.info("Log purchases to view analytics.")
+        return
+
+    # -------- Category-wise CO2 --------
+    category_co2 = defaultdict(float)
+
+    for log in st.session_state.log_list:
+        parts = [p.strip() for p in log.split('|')]
+        category = parts[3]
+        eco = parts[5] == "Eco"
+
+        impact = CO2[category]
+        if eco:
+            impact *= 0.7
+
+        category_co2[category] += impact
+
+    df_co2 = pd.DataFrame({
+        "Category": category_co2.keys(),
+        "CO₂ Emissions (kg)": category_co2.values()
+    })
+
+    st.markdown("**CO₂ Emissions by Category**")
+    st.bar_chart(df_co2.set_index("Category"))
+
+    # -------- Eco vs Non-Eco --------
+    eco_count = sum(1 for log in st.session_state.log_list if "Eco" in log)
+    non_eco_count = len(st.session_state.log_list) - eco_count
+
+    df_eco = pd.DataFrame({
+        "Type": ["Eco-Friendly", "Non-Eco"],
+        "Count": [eco_count, non_eco_count]
+    })
+
+    st.markdown("**Eco vs Non-Eco Purchases**")
+    st.bar_chart(df_eco.set_index("Type"))
 
 # ---------------- RUN ----------------
+
 if __name__ == '__main__':
     main()
