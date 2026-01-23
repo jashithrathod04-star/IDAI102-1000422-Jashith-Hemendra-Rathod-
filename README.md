@@ -1,4 +1,4 @@
-#Project Overview 
+Project Overview 
 
 ShopImpact – Conscious Shopping & Eco Impact Tracker
 
