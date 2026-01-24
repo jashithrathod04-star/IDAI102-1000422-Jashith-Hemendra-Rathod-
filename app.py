@@ -375,7 +375,7 @@ def show_badges():
     st.subheader("🏅 Your Eco Badges")
 
     st.image(
-    "file:///C:/Users/LENOVO/Documents/Jashith/Jashith%20Rathod%20StoryBoard_files/eco_award.png",
+    "https://pngtree.com/so/eco-friendly-logo",
     width=200
 )
 
