@@ -375,7 +375,7 @@ def show_badges():
     st.subheader("🏅 Your Eco Badges")
 
     st.image(
-    "https://cdn-icons-png.flaticon.com/512/616/616554.png",
+    "https://cdn-icons-png.flaticon.com/512/2909/2909761.png",
     width=200
 )
 
