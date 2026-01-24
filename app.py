@@ -375,7 +375,7 @@ def show_badges():
     st.subheader("🏅 Your Eco Badges")
 
     st.image(
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcGirjc-hEz4kq-5btkF2llDqoLo_vI3-RgA&s,
+    "https://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/512/leaf-icon.png",
     width=200
 )
 
