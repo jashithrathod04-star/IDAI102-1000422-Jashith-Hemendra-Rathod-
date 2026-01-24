@@ -455,4 +455,4 @@ ShopImpact demonstrates how technology, data, and design can work together to ad
 
 When awareness meets action, impact follows.
 
-Streamlit:https://plmvqv283eabeok28ypnhv.streamlit.app/
+Streamlit:https://g8c78moyzdezy4cvqvjmat.streamlit.app/
