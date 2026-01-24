@@ -12,6 +12,49 @@ import os
 import random
 import pandas as pd
 
+def apply_theme():
+    st.markdown("""
+    <style>
+    .stApp {
+        background-color: #86e9d5;
+        color: #041107;
+    }
+
+    section[data-testid="stSidebar"] {
+        background-color: #87ee8c;
+    }
+
+    .stButton > button {
+        background-color: #dae8df;
+        color: #041107;
+        border-radius: 12px;
+        border: none;
+        font-weight: 600;
+        padding: 8px 16px;
+    }
+
+    .stButton > button:hover {
+        background-color: #87ee8c;
+    }
+
+    input, textarea, select {
+        border-radius: 10px !important;
+        border: 1px solid #041107 !important;
+    }
+
+    div[data-testid="metric-container"] {
+        background-color: #87ee8c;
+        border-radius: 14px;
+        padding: 14px;
+        border-left: 6px solid #041107;
+    }
+
+    div[data-testid="stProgress"] > div > div {
+        background-color: #041107;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 # ---------------- DATA ----------------
 CO2 = {
     "Clothing": 6,
@@ -67,6 +110,7 @@ def ai_suggestion(category, eco):
 # ---------------- MAIN ----------------
 def main():
     st.set_page_config(page_title="ShopImpact 🌍", layout="wide")
+    apply_theme()   # 👈 ADD THIS LINE
     if not st.session_state.logged_in:
         login_signup()
     else:
