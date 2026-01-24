@@ -16,7 +16,7 @@ def apply_theme():
     st.markdown("""
     <style>
     .stApp {
-        background-color: #2d8ecf;
+        background-color: #72e2ea;
         color: #041107;
     }
 
