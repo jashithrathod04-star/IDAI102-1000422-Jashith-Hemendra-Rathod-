@@ -155,8 +155,18 @@ def apply_theme():
 
         div[data-testid="stAlert"] p {{
             text-shadow: 0 0 6px rgba(46, 125, 50, 0.99);
-       }}    
+       }}
 
+       .stButton > button {{
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }}
+        
+        .stButton > button:hover {{
+            transform: scale(1.03);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }}
+
+         
 
 
         
