@@ -97,7 +97,7 @@ def apply_theme():
         }}
 
         .stApp {{
-            background-color: #697680;
+            background-color: #429ce3;
             color: #b9fac8;
         }}
 
@@ -138,7 +138,7 @@ def apply_theme():
 
         /* Override success/info text color in LIGHT MODE */
         div[data-testid="stAlert"] p {{
-            color: #064420 !important;
+            color: #12334d !important;
             font-weight: 700 !important;
         }}
 
