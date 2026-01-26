@@ -85,6 +85,17 @@ def apply_theme():
         div[data-testid="stProgress"] > div > div {{
             background-color: {accent};
         }}
+
+        /* Eco level cards hover effect */
+        div[data-testid="stAlert"] {{
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }}
+        
+        div[data-testid="stAlert"]:hover {{
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(6, 68, 32, 0.25);
+        }}
+
         </style>
         """, unsafe_allow_html=True)
 
