@@ -137,10 +137,7 @@ def apply_theme():
         }}
 
         
-       /* Eco level text – darker green (light mode) */
-        div[data-testid="stMarkdown"] {
-            color: #064420 !important;
-        }
+       
 
 
        
