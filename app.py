@@ -12,6 +12,30 @@ import os
 import random
 import pandas as pd
 
+THEME_FILE = "theme.json"
+
+def load_theme():
+    if os.path.exists(THEME_FILE):
+        with open(THEME_FILE, "r") as f:
+            return json.load(f)
+    return {
+        "dark_mode": False,
+        "accent": "#2ECC71"
+    }
+
+def save_theme(theme):
+    with open(THEME_FILE, "w") as f:
+        json.dump(theme, f, indent=4)
+
+# ---- initialize theme state ----
+theme = load_theme()
+
+if "dark_mode" not in st.session_state:
+    st.session_state.dark_mode = theme["dark_mode"]
+
+if "accent_color" not in st.session_state:
+    st.session_state.accent_color = theme["accent"]
+
 def apply_theme():
     st.markdown("""
     <style>
