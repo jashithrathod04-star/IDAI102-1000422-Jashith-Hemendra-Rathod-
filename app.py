@@ -290,6 +290,19 @@ def login_signup():
 # ---------------- MAIN APP ----------------
 def open_main_app():
     st.title("ShopImpact 🌍 – Conscious Shopping Dashboard")
+
+        # ========== SIDEBAR FEATURES ==========
+    with st.sidebar:
+        st.markdown("## 🌿 Eco Insights")
+
+        if st.session_state.log_list:
+            top_eco_category()
+            eco_streak()
+            weekly_summary()
+            eco_savings()
+        else:
+            st.info("Log purchases to unlock eco insights 🌱")
+
     
 
 
