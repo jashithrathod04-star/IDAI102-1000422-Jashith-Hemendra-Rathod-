@@ -89,58 +89,27 @@ def apply_theme():
         """, unsafe_allow_html=True)
 
     else:
-        # ---------------- LIGHT THEME ----------------
-        st.markdown(f"""
+        st.markdown("""
         <style>
-        * {{
-            transition: all 0.3s ease-in-out;
-        }}
-
-        .stApp {{
+    
+        .stApp {
             background-color: #697680;
             color: #b9fac8;
-        }}
-
-        section[data-testid="stSidebar"] {{
+        }
+    
+        section[data-testid="stSidebar"] {
             background-color: #C9F7D5;
-        }}
-
-        .stButton > button {{
-            background-color: {accent};
-            color: #b9fac8;
-            border-radius: 12px;
-            border: 2px solid #041107;
-            font-weight: bold;
-            padding: 8px 16px;
-        }}
-
-        .stButton > button:hover {{
-            opacity: 0.85;
-        }}
-
-        input, textarea, select {{
-            border-radius: 10px !important;
-            border: 1px solid #041107 !important;
-        }}
-
-        div[data-testid="metric-container"] {{
-            background-color: #cadecf;
-            border-radius: 14px;
-            padding: 14px;
-            border-left: 6px solid {accent};
-        }}
-
-        div[data-testid="stProgress"] > div > div {{
-            background-color: {accent};
-            
-
-        }}
-
-        
-       
-
-
-       
+        }
+    
+        div[data-testid="stProgress"] > div > div {
+            background-color: """ + accent + """;
+        }
+    
+        /* Eco level text – darker green */
+        div[data-testid="stMarkdown"] {
+            color: #064420 !important;
+        }
+    
         </style>
         """, unsafe_allow_html=True)
 
