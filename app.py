@@ -93,7 +93,7 @@ def apply_theme():
         
         div[data-testid="stAlert"]:hover {{
             transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(6, 68, 32, 0.01);
+            box-shadow: 0 8px 20px rgba(6, 68, 32, 50);
         }}
 
         </style>
