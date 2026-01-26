@@ -96,6 +96,15 @@ def apply_theme():
             box-shadow: 0 8px 20px rgba(6, 68, 32, 50);
         }}
 
+        .stButton > button {{
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }}
+        
+        .stButton > button:hover {{
+            transform: scale(1.03);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }}
+
         </style>
         """, unsafe_allow_html=True)
 
