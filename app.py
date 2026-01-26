@@ -153,6 +153,11 @@ def apply_theme():
             font-weight: 700 !important;
         }}
 
+        div[data-testid="stAlert"] p {{
+            text-shadow: 0 0 6px rgba(46, 125, 50, 0.25);
+       }}    
+
+
 
         
        
