@@ -110,7 +110,7 @@ def apply_theme():
             color: #b9fac8;
             border-radius: 12px;
             border: 2px solid #041107;
-            font-weight: 600;
+            font-weight: bold;
             padding: 8px 16px;
         }}
 
