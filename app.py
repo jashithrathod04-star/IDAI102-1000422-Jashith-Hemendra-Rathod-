@@ -37,47 +37,106 @@ if "accent_color" not in st.session_state:
     st.session_state.accent_color = theme["accent"]
 
 def apply_theme():
-    st.markdown("""
-    <style>
-    .stApp {
-        background-color: #0c7c37;
-        color: #041107;
-    }
+    accent = st.session_state.accent_color
 
-    section[data-testid="stSidebar"] {
-        background-color: #87ee8c;
-    }
+    if st.session_state.dark_mode:
+        # ---------------- DARK THEME ----------------
+        st.markdown(f"""
+        <style>
+        * {{
+            transition: all 0.3s ease-in-out;
+        }}
 
-    .stButton > button {
-        background-color: #dae8df;
-        color: #041107;
-        border-radius: 12px;
-        border: none;
-        font-weight: 600;
-        padding: 8px 16px;
-    }
+        .stApp {{
+            background-color: #0E1117;
+            color: #FAFAFA;
+        }}
 
-    .stButton > button:hover {
-        background-color: #87ee8c;
-    }
+        section[data-testid="stSidebar"] {{
+            background-color: #161B22;
+        }}
 
-    input, textarea, select {
-        border-radius: 10px !important;
-        border: 1px solid #041107 !important;
-    }
+        .stButton > button {{
+            background-color: {accent};
+            color: white;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            padding: 8px 16px;
+        }}
 
-    div[data-testid="metric-container"] {
-        background-color: #87ee8c;
-        border-radius: 14px;
-        padding: 14px;
-        border-left: 6px solid #041107;
-    }
+        .stButton > button:hover {{
+            opacity: 0.85;
+        }}
 
-    div[data-testid="stProgress"] > div > div {
-        background-color: #041107;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+        input, textarea, select {{
+            background-color: #0E1117 !important;
+            color: #FAFAFA !important;
+            border-radius: 10px !important;
+            border: 1px solid #30363D !important;
+        }}
+
+        div[data-testid="metric-container"] {{
+            background-color: #161B22;
+            border-radius: 14px;
+            padding: 14px;
+            border-left: 6px solid {accent};
+        }}
+
+        div[data-testid="stProgress"] > div > div {{
+            background-color: {accent};
+        }}
+        </style>
+        """, unsafe_allow_html=True)
+
+    else:
+        # ---------------- LIGHT THEME ----------------
+        st.markdown(f"""
+        <style>
+        * {{
+            transition: all 0.3s ease-in-out;
+        }}
+
+        .stApp {{
+            background-color: #E8FFF1;
+            color: #041107;
+        }}
+
+        section[data-testid="stSidebar"] {{
+            background-color: #C9F7D5;
+        }}
+
+        .stButton > button {{
+            background-color: {accent};
+            color: #041107;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            padding: 8px 16px;
+        }}
+
+        .stButton > button:hover {{
+            opacity: 0.85;
+        }}
+
+        input, textarea, select {{
+            border-radius: 10px !important;
+            border: 1px solid #041107 !important;
+        }}
+
+        div[data-testid="metric-container"] {{
+            background-color: #C9F7D5;
+            border-radius: 14px;
+            padding: 14px;
+            border-left: 6px solid {accent};
+        }}
+
+        div[data-testid="stProgress"] > div > div {{
+            background-color: {accent};
+        }}
+        </style>
+        """, unsafe_allow_html=True)
+
 
 # ---------------- DATA ----------------
 CO2 = {
