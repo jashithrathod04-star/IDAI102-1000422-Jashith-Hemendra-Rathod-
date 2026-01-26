@@ -124,7 +124,7 @@ def apply_theme():
         }}
 
         div[data-testid="metric-container"] {{
-            background-color: #C9F7D5;
+            background-color: #e4f5e8;
             border-radius: 14px;
             padding: 14px;
             border-left: 6px solid {accent};
