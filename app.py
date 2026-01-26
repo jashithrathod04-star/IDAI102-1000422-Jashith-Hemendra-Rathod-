@@ -468,7 +468,7 @@ def add_purchase(product, brand, category, price, eco):
     st.markdown(
         f"""
         <div style="
-            background-color:#056aad;
+            background-color:#60bbf7;
             padding:16px;
             border-radius:12px;
             border-left:6px solid #2ECC71;
