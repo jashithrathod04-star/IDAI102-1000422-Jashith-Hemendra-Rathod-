@@ -150,85 +150,110 @@ def login_signup():
             st.success("Account created successfully. Please login.")
 
 # ---------------- MAIN APP ----------------
+# ---------------- MAIN APP ----------------
 def open_main_app():
     st.title("ShopImpact 🌍 – Conscious Shopping Dashboard")
-    
 
-    today = datetime.date.today().isoformat()
-    daily_co2 = st.session_state.daily_data.get(today, 0)
-    daily_spend = st.session_state.spending_data.get(today, 0)
-    eco_score = int((st.session_state.eco_count / st.session_state.total_count) * 100) if st.session_state.total_count else 0
+    tab1, tab2, tab3, tab4, tab5 = st.tabs([
+        "📊 Dashboard",
+        "📈 Analytics & Progress",
+        "🏅 Badges & Rewards",
+        "💡 Motivation & AI",
+        "📝 Feedback"
+    ])
 
-    col1, col2, col3 = st.columns(3)
-    col1.metric("CO₂ Emissions Today (kg)", f"{daily_co2:.2f}")
-    col2.metric("Amount Spent Today (₹)", f"{daily_spend:.2f}")
-    col3.metric("Eco Score", f"{eco_score}/100")
-    st.subheader("🌿 Eco Progress")
-    progress = st.progress(0)
+    # ================= TAB 1: DASHBOARD =================
+    with tab1:
+        today = datetime.date.today().isoformat()
+        daily_co2 = st.session_state.daily_data.get(today, 0)
+        daily_spend = st.session_state.spending_data.get(today, 0)
+        eco_score = int((st.session_state.eco_count / st.session_state.total_count) * 100) if st.session_state.total_count else 0
 
-    for i in range(eco_score + 1):
-     progress.progress(i)
+        col1, col2, col3 = st.columns(3)
+        col1.metric("CO₂ Emissions Today (kg)", f"{daily_co2:.2f}")
+        col2.metric("Amount Spent Today (₹)", f"{daily_spend:.2f}")
+        col3.metric("Eco Score", f"{eco_score}/100")
 
-    st.markdown("""
-<style>
-.glow {
-    font-size: 42px;
-    animation: glow 1.5s ease-in-out infinite alternate;
-}
-@keyframes glow {
-    from { text-shadow: 0 0 5px #7CFF9E; }
-    to { text-shadow: 0 0 20px #1DB954; }
-}
-</style>
-""", unsafe_allow_html=True)
-    
-    
+        st.subheader("🌿 Eco Progress")
+        progress = st.progress(0)
+        for i in range(eco_score + 1):
+            progress.progress(i)
 
+        st.divider()
 
-    st.divider()
+        st.subheader("Log a New Purchase")
+        product = st.text_input("Product Name")
+        brand = st.text_input("Brand")
+        category = st.selectbox("Category", list(CO2.keys()))
+        price = st.number_input("Price (₹)", min_value=0.0, format="%.2f")
+        eco = st.checkbox("Eco-Friendly Choice 🌱")
 
-    st.subheader("Log a New Purchase")
-    product = st.text_input("Product Name")
-    brand = st.text_input("Brand")
-    category = st.selectbox("Category", list(CO2.keys()))
-    price = st.number_input("Price (₹)", min_value=0.0, format="%.2f")
-    eco = st.checkbox("Eco-Friendly Choice 🌱")
+        if st.button("Add Purchase"):
+            add_purchase(product, brand, category, price, eco)
 
-    if st.button("Add Purchase"):
-        add_purchase(product, brand, category, price, eco)
+        st.subheader("Purchase History")
+        for log in reversed(st.session_state.log_list):
+            st.text(log)
 
-    st.subheader("Purchase History")
-    for log in reversed(st.session_state.log_list):
-        st.text(log)
+    # ================= TAB 2: ANALYTICS =================
+    with tab2:
+        show_visual_analytics()
 
-    if st.session_state.log_list:
-        last_log = st.session_state.log_list[-1]
-        last_category = last_log.split('|')[3].strip()
-        last_eco = 'Eco' in last_log
-        st.info(ai_suggestion(last_category, last_eco))
+        st.subheader("📅 Daily CO₂ Progress")
+        if st.session_state.daily_data:
+            df_daily = pd.DataFrame(
+                st.session_state.daily_data.items(),
+                columns=["Date", "CO₂ Emissions"]
+            )
+            df_daily["Date"] = pd.to_datetime(df_daily["Date"])
+            st.line_chart(df_daily.set_index("Date"))
+        else:
+            st.info("No daily data yet.")
 
-    st.subheader("Insights & Tools")
-    c1, c2, c3, c4 = st.columns(4)
-    with c1:
-        if st.button("Top Eco Category"):
-            top_eco_category()
-    with c2:
-        if st.button("Eco Streak"):
-            eco_streak()
-    with c3:
-        if st.button("Weekly Summary"):
-            weekly_summary()
-    with c4:
-        if st.button("Eco Savings"):
-            eco_savings()
+    # ================= TAB 3: BADGES =================
+    with tab3:
+        check_awards()
+        show_badges()
 
-    st.subheader("Download Your Report")
-    download_csv()
+    # ================= TAB 4: MOTIVATION & AI =================
+    with tab4:
+        st.subheader("🌱 Motivational Message")
+        st.success(random.choice(QUOTES))
 
-    st.success(random.choice(QUOTES))
-    check_awards()
-    show_badges()
-    show_visual_analytics()
+        if st.session_state.log_list:
+            last_log = st.session_state.log_list[-1]
+            last_category = last_log.split('|')[3].strip()
+            last_eco = 'Eco' in last_log
+            st.info(ai_suggestion(last_category, last_eco))
+        else:
+            st.info("Log a purchase to receive AI insights.")
+
+    # ================= TAB 5: FEEDBACK =================
+    with tab5:
+        st.subheader("📝 Feedback Form")
+
+        name = st.text_input("Your Name")
+        feedback = st.text_area("Your Feedback")
+
+        if st.button("Submit Feedback"):
+            if not name.strip() or not feedback.strip():
+                st.error("Please fill in all fields.")
+            else:
+                feedback_data = []
+                if os.path.exists("feedback.json"):
+                    with open("feedback.json", "r") as f:
+                        feedback_data = json.load(f)
+
+                feedback_data.append({
+                    "name": name,
+                    "feedback": feedback,
+                    "date": datetime.date.today().isoformat()
+                })
+
+                with open("feedback.json", "w") as f:
+                    json.dump(feedback_data, f, indent=4)
+
+                st.success("Thank you for your feedback 💚")
 
 
 
