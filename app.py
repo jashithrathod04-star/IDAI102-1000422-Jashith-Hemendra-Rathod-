@@ -347,29 +347,29 @@ def open_main_app():
     with tab6:
         st.subheader("⚙️ App Settings")
 
-dark = st.toggle("🌙 Dark Mode", st.session_state.dark_mode)
-
-accent = st.color_picker(
-    "🎨 Accent Color",
-    st.session_state.accent_color
-)
-
-if dark != st.session_state.dark_mode or accent != st.session_state.accent_color:
-    st.session_state.dark_mode = dark
-    st.session_state.accent_color = accent
-
-    save_theme({
-        "dark_mode": dark,
-        "accent": accent
-    })
-
-    st.rerun()
-
-st.divider()
-
-if st.button("🚪 Log Out"):
-    st.session_state.logged_in = False
-    st.rerun()
+        dark = st.toggle("🌙 Dark Mode", st.session_state.dark_mode)
+        
+        accent = st.color_picker(
+            "🎨 Accent Color",
+            st.session_state.accent_color
+        )
+        
+        if dark != st.session_state.dark_mode or accent != st.session_state.accent_color:
+            st.session_state.dark_mode = dark
+            st.session_state.accent_color = accent
+        
+            save_theme({
+                "dark_mode": dark,
+                "accent": accent
+            })
+        
+            st.rerun()
+        
+        st.divider()
+        
+        if st.button("🚪 Log Out"):
+            st.session_state.logged_in = False
+            st.rerun()
 
 
 
