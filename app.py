@@ -98,7 +98,7 @@ def apply_theme():
 
         .stApp {{
             background-color: #060b36;
-            color: #041107;
+            color: #b9fac8;
         }}
 
         section[data-testid="stSidebar"] {{
