@@ -97,7 +97,7 @@ def apply_theme():
         }}
 
         .stApp {{
-            background-color: #a5fac6;
+            background-color: #53968d;
             color: #041107;
         }}
 
