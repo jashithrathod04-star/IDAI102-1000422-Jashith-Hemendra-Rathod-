@@ -109,7 +109,7 @@ def apply_theme():
             background-color: {accent};
             color: #b9fac8;
             border-radius: 12px;
-            border: none;
+            border: 2px solid #041107;
             font-weight: 600;
             padding: 8px 16px;
         }}
