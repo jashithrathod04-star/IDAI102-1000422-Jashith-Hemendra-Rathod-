@@ -136,6 +136,13 @@ def apply_theme():
 
         }}
 
+        /* Override success/info text color in LIGHT MODE */
+        div[data-testid="stAlert"] p {
+            color: #064420 !important;
+            font-weight: 700 !important;
+        }
+
+
         
        
 
