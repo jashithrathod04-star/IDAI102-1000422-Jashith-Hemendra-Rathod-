@@ -343,7 +343,7 @@ def open_main_app():
         eco = st.checkbox("Eco-Friendly Choice 🌱")
 
         if st.button("Add Purchase"):
-            add_purchase(product, brand, category, price, eco)
+            add purchase(product, brand, category, price, eco)
 
         st.subheader("Purchase History")
         for log in reversed(st.session_state.log_list):
@@ -468,7 +468,7 @@ def add_purchase(product, brand, category, price, eco):
     st.markdown(
         f"""
         <div style="
-            background-color:#E8FFF3;
+            background-color:#0d120f;
             padding:16px;
             border-radius:12px;
             border-left:6px solid #2ECC71;
