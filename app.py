@@ -154,7 +154,7 @@ def apply_theme():
         }}
 
         div[data-testid="stAlert"] p {{
-            text-shadow: 0 0 6px rgba(46, 125, 50, 0.25);
+            text-shadow: 0 0 6px rgba(46, 125, 50, 0.99);
        }}    
 
 
