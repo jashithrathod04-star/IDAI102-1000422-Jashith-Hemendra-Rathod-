@@ -77,6 +77,8 @@ if 'log_list' not in st.session_state:
     st.session_state.log_list = []
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
+if 'dark_mode' not in st.session_state:
+    st.session_state.dark_mode = False
 
 USER_FILE = "users.json"
 
@@ -154,13 +156,15 @@ def login_signup():
 def open_main_app():
     st.title("ShopImpact 🌍 – Conscious Shopping Dashboard")
 
-    tab1, tab2, tab3, tab4, tab5 = st.tabs([
-        "📊 Dashboard",
-        "📈 Analytics & Progress",
-        "🏅 Badges & Rewards",
-        "💡 Motivation & AI",
-        "📝 Feedback"
-    ])
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+    "📊 Dashboard",
+    "📈 Analytics & Progress",
+    "🏅 Badges & Rewards",
+    "💡 Motivation & AI",
+    "📝 Feedback",
+    "⚙️ Settings"
+])
+
 
     # ================= TAB 1: DASHBOARD =================
     with tab1:
@@ -254,6 +258,24 @@ def open_main_app():
                     json.dump(feedback_data, f, indent=4)
 
                 st.success("Thank you for your feedback 💚")
+
+    with tab6:
+    st.subheader("⚙️ App Settings")
+
+    # ---- Dark Mode Toggle ----
+    dark = st.toggle("🌙 Enable Dark Mode", value=st.session_state.dark_mode)
+
+    if dark != st.session_state.dark_mode:
+        st.session_state.dark_mode = dark
+        st.rerun()
+
+    st.divider()
+
+    # ---- Logout ----
+    if st.button("🚪 Log Out"):
+        st.session_state.logged_in = False
+        st.session_state.log_list = []
+        st.rerun()
 
 
 
