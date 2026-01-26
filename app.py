@@ -35,12 +35,11 @@ if "dark_mode" not in st.session_state:
 
 if "accent_color" not in st.session_state:
     st.session_state.accent_color = theme["accent"]
-
 def apply_theme():
     accent = st.session_state.accent_color
 
     if st.session_state.dark_mode:
-        # ================= DARK MODE =================
+        # ---------------- DARK THEME ----------------
         st.markdown(f"""
         <style>
         * {{
@@ -65,11 +64,15 @@ def apply_theme():
             padding: 8px 16px;
         }}
 
+        .stButton > button:hover {{
+            opacity: 0.85;
+        }}
+
         input, textarea, select {{
             background-color: #0E1117 !important;
             color: #FAFAFA !important;
-            border: 1px solid #30363D !important;
             border-radius: 10px !important;
+            border: 1px solid #30363D !important;
         }}
 
         div[data-testid="metric-container"] {{
@@ -86,7 +89,7 @@ def apply_theme():
         """, unsafe_allow_html=True)
 
     else:
-        # ================= LIGHT MODE (LIGHT GREEN) =================
+        # ---------------- LIGHT THEME ----------------
         st.markdown(f"""
         <style>
         * {{
@@ -94,32 +97,34 @@ def apply_theme():
         }}
 
         .stApp {{
-            background-color: #E6F7ED;   /* 🌿 Light green background */
-            color: #0B3D1E;
+            background-color: #E8FFF1;
+            color: #041107;
         }}
 
         section[data-testid="stSidebar"] {{
-            background-color: #CFF3DC;
+            background-color: #C9F7D5;
         }}
 
         .stButton > button {{
             background-color: {accent};
-            color: #0B3D1E;
+            color: #041107;
             border-radius: 12px;
             border: none;
             font-weight: 600;
             padding: 8px 16px;
         }}
 
+        .stButton > button:hover {{
+            opacity: 0.85;
+        }}
+
         input, textarea, select {{
-            background-color: #F4FFF8 !important;
-            border: 1px solid #0B3D1E !important;
             border-radius: 10px !important;
-            color: #0B3D1E !important;
+            border: 1px solid #041107 !important;
         }}
 
         div[data-testid="metric-container"] {{
-            background-color: #CFF3DC;
+            background-color: #C9F7D5;
             border-radius: 14px;
             padding: 14px;
             border-left: 6px solid {accent};
@@ -130,6 +135,7 @@ def apply_theme():
         }}
         </style>
         """, unsafe_allow_html=True)
+
 
 
 
