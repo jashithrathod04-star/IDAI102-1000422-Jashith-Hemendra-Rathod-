@@ -161,7 +161,7 @@ def apply_theme():
         /* Override success/info text color in LIGHT MODE */
         div[data-testid="stAlert"] p {{
             color: #12334d !important;
-            font-weight: 700 !important;
+            font-weight: 100 !important;
         }}
 
         div[data-testid="stAlert"] p {{
