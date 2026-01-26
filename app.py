@@ -343,7 +343,7 @@ def open_main_app():
         eco = st.checkbox("Eco-Friendly Choice 🌱")
 
         if st.button("Add Purchase"):
-            add purchase(product, brand, category, price, eco)
+            add_purchase(product, brand, category, price, eco)
 
         st.subheader("Purchase History")
         for log in reversed(st.session_state.log_list):
