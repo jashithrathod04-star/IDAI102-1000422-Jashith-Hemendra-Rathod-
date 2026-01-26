@@ -107,7 +107,7 @@ def apply_theme():
 
         .stButton > button {{
             background-color: {accent};
-            color: #041107;
+            color: #b9fac8;
             border-radius: 12px;
             border: none;
             font-weight: 600;
