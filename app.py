@@ -101,7 +101,7 @@ def apply_theme():
         }}
         
         .stButton > button:hover {{
-            transform: scale(5);
+            transform: scale(2);
             box-shadow: 0 6px 14px rgba(0,0,0,0.15);
         }}
 
