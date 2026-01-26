@@ -137,17 +137,17 @@ def apply_theme():
         }}
 
         
-            div[data-testid="stMarkdown"] {
-                color: #064420 !important;
-            }
-            
-            div[data-testid="stMarkdown"] strong {
-                color: #043d1a !important;
-            }
-            
-            div[data-testid="stMarkdown"] span {
-                color: #064420 !important;
-            }
+        div[data-testid="stMarkdown"] {
+            color: #064420 !important;
+        }
+        
+        div[data-testid="stMarkdown"] strong {
+            color: #043d1a !important;
+        }
+        
+        div[data-testid="stMarkdown"] span {
+            color: #064420 !important;
+        }
 
        
         </style>
