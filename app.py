@@ -12,30 +12,6 @@ import os
 import random
 import pandas as pd
 
-if "dark_mode" not in st.session_state:
-    st.session_state.dark_mode = False
-
-if st.session_state.dark_mode:
-    st.markdown("""
-        <style>
-        .stApp {
-            background-color: #0e1117;
-            color: white;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-else:
-    st.markdown("""
-        <style>
-        .stApp {
-            background-color: #eaf7e4;
-            color: black;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-
-
-
 def apply_theme():
     st.markdown("""
     <style>
@@ -178,14 +154,13 @@ def login_signup():
 def open_main_app():
     st.title("ShopImpact 🌍 – Conscious Shopping Dashboard")
 
-   tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
-    "📊 Dashboard",
-    "📈 Analytics & Progress",
-    "🏅 Badges & Rewards",
-    "💡 Motivation & AI",
-    "📝 Feedback",
-    "⚙️ Settings"
-])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs([
+        "📊 Dashboard",
+        "📈 Analytics & Progress",
+        "🏅 Badges & Rewards",
+        "💡 Motivation & AI",
+        "📝 Feedback"
+    ])
 
     # ================= TAB 1: DASHBOARD =================
     with tab1:
@@ -279,31 +254,6 @@ def open_main_app():
                     json.dump(feedback_data, f, indent=4)
 
                 st.success("Thank you for your feedback 💚")
-
-# ================= TAB 6: SETTINGS =================
-with tab6:
-    st.subheader("⚙️ App Settings")
-
-    st.markdown("### 🌗 Theme")
-    dark_toggle = st.toggle(
-        "Enable Dark Mode",
-        value=st.session_state.dark_mode
-    )
-
-    if dark_toggle != st.session_state.dark_mode:
-        st.session_state.dark_mode = dark_toggle
-        st.rerun()
-
-    st.divider()
-
-    st.markdown("### 🔒 Account")
-
-    if st.button("Log Out"):
-        for key in list(st.session_state.keys()):
-            del st.session_state[key]
-        st.success("You have been logged out.")
-        st.rerun()
-
 
 
 
