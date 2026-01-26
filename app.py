@@ -135,7 +135,20 @@ def apply_theme():
             
 
         }}
-        
+
+        /* 🔤 Darker eco badge text (Light Mode only) */
+            div[data-testid="stMarkdown"] {
+                color: #064420 !important;
+            }
+            
+            div[data-testid="stMarkdown"] strong {
+                color: #043d1a !important;
+            }
+            
+            div[data-testid="stMarkdown"] span {
+                color: #064420 !important;
+            }
+
        
         </style>
         """, unsafe_allow_html=True)
