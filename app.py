@@ -290,7 +290,7 @@ def login_signup():
 # ---------------- MAIN APP ----------------
 def open_main_app():
     st.title("ShopImpact 🌍 – Conscious Shopping Dashboard")
-    sidebar_co2_chart()
+    
 
 
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
