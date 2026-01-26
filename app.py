@@ -136,20 +136,7 @@ def apply_theme():
 
         }}
         
-        div[data-testid="stHorizontalBlock"] > div {
-            background-color: #c8f7d2;   /* light eco green */
-            border-radius: 18px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        
-        
-        div[data-testid="stHorizontalBlock"] h3,
-        div[data-testid="stHorizontalBlock"] p,
-        div[data-testid="stHorizontalBlock"] span {
-            color: #064420;
-            font-weight: 600;
-        }
+       
         </style>
         """, unsafe_allow_html=True)
 
