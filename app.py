@@ -260,7 +260,7 @@ def open_main_app():
                 st.success("Thank you for your feedback 💚")
 
     with tab6:
-    st.subheader("⚙️ App Settings")
+        st.subheader("⚙️ App Settings")
 
     # ---- Dark Mode Toggle ----
     dark = st.toggle("🌙 Enable Dark Mode", value=st.session_state.dark_mode)
