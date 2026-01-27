@@ -1,4 +1,3 @@
-<img width="1920" height="874" alt="image" src="https://github.com/user-attachments/assets/164ce9e8-475a-4325-8855-93d4b187d58d" /># ShopImpact – Conscious Shopping & Eco Impact Tracker
 
 **Live Application:**  
 https://g8c78moyzdezy4cvqvjmat.streamlit.app/
