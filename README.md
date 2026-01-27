@@ -1,4 +1,4 @@
-# ShopImpact – Conscious Shopping & Eco Impact Tracker
+<img width="1920" height="874" alt="image" src="https://github.com/user-attachments/assets/164ce9e8-475a-4325-8855-93d4b187d58d" /># ShopImpact – Conscious Shopping & Eco Impact Tracker
 
 **Live Application:**  
 https://g8c78moyzdezy4cvqvjmat.streamlit.app/
@@ -105,6 +105,38 @@ The application runs at:
 The application becomes publicly accessible via a Streamlit-generated URL.
 
 ---
+
+##App Screenshots
+
+#Dashboard
+<img width="1920" height="881" alt="image" src="https://github.com/user-attachments/assets/25fa4d90-d2da-48e8-bfd0-c36c4b6c21eb" />
+
+#Visual Analytics 
+<img width="1920" height="882" alt="image" src="https://github.com/user-attachments/assets/1dec1a3b-0cb9-4c8b-a9a0-ffdc630d0c77" />
+
+#Badges and Rewards
+<img width="1920" height="874" alt="image" src="https://github.com/user-attachments/assets/3eb25b1b-2b44-4cf4-826b-9fe8091847ba" />
+
+#Motivational Message and AI Insights
+<img width="1806" height="396" alt="image" src="https://github.com/user-attachments/assets/abec743b-332f-4b54-bc09-b7286418e1cd" />
+
+#Feedback
+<img width="1821" height="592" alt="image" src="https://github.com/user-attachments/assets/b8aa0cdc-0ee2-4992-9584-5fea5f152700" />
+
+#Settings 
+<img width="1920" height="872" alt="image" src="https://github.com/user-attachments/assets/ebfdcf6b-cf32-4c47-a0cf-faf0a11edd77" />
+
+#Light Mode 
+<img width="1838" height="806" alt="image" src="https://github.com/user-attachments/assets/8b231cc9-0dd4-45ba-b589-39fe4e56a7cc" />
+
+#Sidebar
+<img width="1146" height="874" alt="image" src="https://github.com/user-attachments/assets/1792a2cc-ff41-4236-85e5-286dd4d1c626" />
+
+
+
+
+
+
 
 ## Target Audience
 
