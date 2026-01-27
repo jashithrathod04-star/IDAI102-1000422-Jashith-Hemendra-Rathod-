@@ -1,4 +1,6 @@
 Project Overview 
+<img width="1692" height="756" alt="image" src="https://github.com/user-attachments/assets/f71038a5-4d3c-46fe-a718-3d1c3f0db973" />
+
 
 ShopImpact – Conscious Shopping & Eco Impact Tracker
 
