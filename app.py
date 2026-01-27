@@ -291,7 +291,7 @@ def login_signup():
 # ---------------- MAIN APP ----------------
 # ---------------- MAIN APP ----------------
 def open_main_app():
-    st.title("ShopImpact 🌍 – Conscious Shopping Dashboard")
+    st.title("ShopImpact 🌍 – Conscious Shopping ")
 
         # ========== SIDEBAR FEATURES ==========
     with st.sidebar:
