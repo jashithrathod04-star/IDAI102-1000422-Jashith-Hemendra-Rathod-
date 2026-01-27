@@ -1,3 +1,10 @@
+Student Name: Jashith Hemendra Rathod 
+Student ID: 1000422
+Course: Artificial Intelligence | Python Programming
+Assessment Type: Summative Assessment
+Project Title: Design and Deploy an Interactive Python Application
+
+---
 
 **Live Application:**  
 https://g8c78moyzdezy4cvqvjmat.streamlit.app/
