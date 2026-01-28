@@ -493,6 +493,10 @@ def add_purchase(product, brand, category, price, eco):
         st.warning("♻️ Consider eco-friendly alternatives to reduce impact.")
 
 
+    st.rerun()
+
+
+
 
 
 
