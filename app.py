@@ -492,6 +492,8 @@ def add_purchase(product, brand, category, price, eco):
     else:
         st.warning("♻️ Consider eco-friendly alternatives to reduce impact.")
 
+st.rerun()
+
 
 
 # ---------------- CSV DOWNLOAD ----------------
