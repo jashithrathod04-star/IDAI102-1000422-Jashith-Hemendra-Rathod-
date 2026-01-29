@@ -644,15 +644,16 @@ def show_visual_analytics():
     st.bar_chart(df_co2.set_index("Category"))
 
     # -------- Eco vs Non-Eco --------
-   eco_count = 0
-   non_eco_count = 0
+   eco_count = sum(
+    1 for log in st.session_state.log_list
+    if log.split('|')[5].strip() == "Eco"
+    )
+    
+    non_eco_count = sum(
+        1 for log in st.session_state.log_list
+        if log.split('|')[5].strip() == "Non-Eco"
+    )
 
-    for log in st.session_state.log_list:
-        status = log.split('|')[5].strip()
-        if status == "Eco":
-            eco_count += 1
-        elif status == "Non-Eco":
-            non_eco_count += 1
 
 
     df_eco = pd.DataFrame({
