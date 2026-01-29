@@ -645,7 +645,7 @@ def show_visual_analytics():
 
     # -------- Eco vs Non-Eco --------
    eco_count = sum(1 for log in st.session_state.log_list if "Eco" in log)
-   non_eco_count = len(st.session_state.log_list) - eco_count
+   non_eco_count = len(st.session_state.log_list) - eco_count)
 
 
 
